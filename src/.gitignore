@@ -1,3 +1,5 @@
-*
-!*.el
-!.gitignore
+*.elc
+.org-id-locations
+.emacs.desktop*
+.*~
+*~
