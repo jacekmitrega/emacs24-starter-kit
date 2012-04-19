@@ -100,6 +100,13 @@ for information on installing nxhtml see [[http://www.emacswiki.org/emacs/Nxhtml
   (starter-kit-load "python" "ipython")
 #+end_src
 
+** lambda-mode
+#+begin_src emacs-lisp
+  (require 'lambda-mode)
+  (add-hook 'python-mode-hook #'lambda-mode 1)
+  (setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
+#+end_src
+
 * JavaScript
 ** Check dependencies
 #+begin_src emacs-lisp
