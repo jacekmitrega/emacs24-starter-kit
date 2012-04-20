@@ -90,10 +90,7 @@ for information on installing nxhtml see [[http://www.emacswiki.org/emacs/Nxhtml
     (interactive)
     (ucs-insert #x20ac))
   (global-set-key (kbd "⅛") 'insert-euro)
-#+end_#+BEGIN_SRC 
-   
-#+END_SRC
-
+#+end_src
 
 * Org
 #+begin_src emacs-lisp
