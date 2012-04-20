@@ -18,6 +18,13 @@
 #+end_src
 
 * Misc
+** Extra elpa repositories
+- Melpa :: Milkypostman’s Experimental Lisp Package Repository http://melpa.milkbox.net/
+#+begin_src emacs-lisp
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+#+end_src
+
 ** Check dependencies
 #+begin_src emacs-lisp
   (dolist (package '(yaml-mode))
