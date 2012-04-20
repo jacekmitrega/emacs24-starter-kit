@@ -79,6 +79,22 @@ for information on installing nxhtml see [[http://www.emacswiki.org/emacs/Nxhtml
 ;; (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
 #+end_src
 
+** Keys
+- ° :: AltGr + Shift + 0
+- € :: AltGr + Shift + 2
+- £ :: AltGr + Shift + 3
+
+#+begin_src emacs-lisp
+  (defun insert-euro ()
+    "Insert a Euro currency symbol in utf-8."
+    (interactive)
+    (ucs-insert #x20ac))
+  (global-set-key (kbd "⅛") 'insert-euro)
+#+end_#+BEGIN_SRC 
+   
+#+END_SRC
+
+
 * Org
 #+begin_src emacs-lisp
   (starter-kit-load "org")
