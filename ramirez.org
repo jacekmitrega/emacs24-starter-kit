@@ -43,6 +43,8 @@ You really don't need this; trust me.
 (menu-bar-mode -1)
 #+end_src
 
+** Column number mode                                                :visual:
+(setq column-number-mode t)
 ** Set browser
 Set this to whatever browser you use e.g...
 : ;; (setq browse-url-browser-function 'browse-url-firefox)
