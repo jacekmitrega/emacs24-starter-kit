@@ -86,6 +86,25 @@ for information on installing nxhtml see [[http://www.emacswiki.org/emacs/Nxhtml
 ;; (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
 #+end_src
 
+** Helm
+*** Disable ido-mode
+#+begin_src emacs-lisp
+  (ido-mode nil)
+#+end_src
+
+*** Check dependencies
+#+begin_src emacs-lisp
+  (dolist (package '(helm))
+    (unless (package-installed-p package)
+      (package-install package)))
+#+end_src
+
+*** Start helm
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-c h") 'helm-mini)
+  (helm-mode 1)
+#+end_src
+
 ** Keys
 - ° :: AltGr + Shift + 0
 - € :: AltGr + Shift + 2
