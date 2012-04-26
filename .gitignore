@@ -19,7 +19,7 @@ image-dired/*
 elim/*
 doc/*
 elpa/*
-themes/*
+#themes/*
 url/*
 
 ## exported and encrypted files
