@@ -1,72 +1,7 @@
 #+TITLE: Ramirez Emacs Starter Kit Customization
 #+OPTIONS: toc:2 num:nil ^:nil
 
-* Theme
-** Check dependencies
-#+begin_src emacs-lisp
-  (dolist (package '(zenburn-theme))
-    (unless (package-installed-p package)
-      (package-install package)))
-#+end_src
-
-** Set custom theme load path
-(Add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-
-** Set default theme
-#+begin_src emacs-lisp
-(load "zenburn-theme")
-#+end_src
-
 * Misc
-** Extra elpa repositories
-- Melpa :: Milkypostman’s Experimental Lisp Package Repository http://melpa.milkbox.net/
-#+begin_src emacs-lisp
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-#+end_src
-
-** Check dependencies
-#+begin_src emacs-lisp
-  (dolist (package '(yaml-mode))
-    (unless (package-installed-p package)
-      (package-install package)))
-#+end_src
-
-** Window systems -- remove visual cruft                             :visual:
-   :PROPERTIES:
-   :CUSTOM_ID: window-system
-   :END:
-#+name: starter-kit-window-view-stuff-recommended
-#+begin_src emacs-lisp 
-(when window-system
-  (tooltip-mode -1)
-  (tool-bar-mode -1))
-#+end_src
-
-** No Menu Bar                                                       :visual:
-You really don't need this; trust me.
-#+name: starter-kit-no-menu
-#+begin_src emacs-lisp 
-(menu-bar-mode -1)
-#+end_src
-
-** Column number mode                                                :visual:
-(setq column-number-mode t)
-** Set browser
-Set this to whatever browser you use e.g...
-: ;; (setq browse-url-browser-function 'browse-url-firefox)
-: ;; (setq browse-url-browser-function 'browse-default-macosx-browser)
-: ;; (setq browse-url-browser-function 'browse-default-windows-browser)
-: ;; (setq browse-url-browser-function 'browse-default-kde)
-: ;; (setq browse-url-browser-function 'browse-default-epiphany)
-: ;; (setq browse-url-browser-function 'browse-default-w3m)
-: ;; (setq browse-url-browser-function 'browse-url-generic
-: ;;       browse-url-generic-program "~/src/conkeror/conkeror")
-#+begin_src emacs-lisp
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "browser")
-#+end_src
-
 ** TODO [#B] Nxhtml -- utilities for web development
 [[http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html][Nxhtml]] is a large package of utilities for web development and for
 embedding multiple major modes in a single buffer.
@@ -86,38 +21,6 @@ for information on installing nxhtml see [[http://www.emacswiki.org/emacs/Nxhtml
 ;; (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
 #+end_src
 
-** Helm
-*** Disable ido-mode
-#+begin_src emacs-lisp
-  (ido-mode nil)
-#+end_src
-
-*** Check dependencies
-#+begin_src emacs-lisp
-  (dolist (package '(helm))
-    (unless (package-installed-p package)
-      (package-install package)))
-#+end_src
-
-*** Start helm
-#+begin_src emacs-lisp
-  (global-set-key (kbd "C-c h") 'helm-mini)
-  (helm-mode 1)
-#+end_src
-
-** Keys
-- ° :: AltGr + Shift + 0
-- € :: AltGr + Shift + 2
-- £ :: AltGr + Shift + 3
-
-#+begin_src emacs-lisp
-  (defun insert-euro ()
-    "Insert a Euro currency symbol in utf-8."
-    (interactive)
-    (ucs-insert #x20ac))
-  (global-set-key (kbd "⅛") 'insert-euro)
-#+end_src
-
 * Org
 #+begin_src emacs-lisp
   (starter-kit-load "org")
@@ -125,9 +28,7 @@ for information on installing nxhtml see [[http://www.emacswiki.org/emacs/Nxhtml
 * Python
 ** Check dependencies
 #+begin_src emacs-lisp
-  (dolist (package '(python-mode ipython pymacs))
-    (unless (package-installed-p package)
-      (package-install package)))
+  (package-install-needed '(python-mode ipython pymacs))
 #+end_src
 
 ** python-mode.el
@@ -145,15 +46,14 @@ for information on installing nxhtml see [[http://www.emacswiki.org/emacs/Nxhtml
 #+begin_src emacs-lisp
   (require 'lambda-mode)
   (add-hook 'python-mode-hook #'lambda-mode 1)
+  (add-hook 'lisp-mode-hook #'lambda-mode 1)
   (setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
 #+end_src
 
 * JavaScript
 ** Check dependencies
 #+begin_src emacs-lisp
-  (dolist (package '(js2-mode))
-    (unless (package-installed-p package)
-      (package-install package)))
+  (package-install-needed '(js2-mode))
 #+end_src
 
 ** Load starter-kit js.
@@ -177,9 +77,7 @@ for information on installing nxhtml see [[http://www.emacswiki.org/emacs/Nxhtml
 * Lisp
 ** Check dependencies
 #+begin_src emacs-lisp
-  (dolist (package '(paredit))
-    (unless (package-installed-p package)
-      (package-install package)))
+  (package-install-needed '(paredit))
 #+end_src
 
 ** Config
@@ -197,15 +95,8 @@ for information on installing nxhtml see [[http://www.emacswiki.org/emacs/Nxhtml
 ;  (starter-kit-load "lisp" "common-lisp")
 #+end_src
 
-* Lua
-** Check Dependencies
-#+begin_src emacs-lisp
-  (dolist (package '(lua-mode))
-    (unless (package-installed-p package)
-      (package-install package)))
-#+end_src
-
 * eshell
 #+begin_src emacs-lisp
   (starter-kit-load "eshell")
 #+end_src
+
