@@ -3,13 +3,12 @@
 ;; ========== INITIAL SETUP ========== ;;
 
 ;; Turn off mouse interface early in startup to avoid momentary display
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-(when window-system
-  (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-  (if (fboundp 'tooltip-mode) (tooltip-mode -1))
-  (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-  )
+;; (when window-system ...)
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'tooltip-mode) (tooltip-mode -1))
 
 ;; Add user's .emacs.d directory to the load-path
 (let
@@ -20,7 +19,9 @@
 ;; Load theme as soon as possible
 (load "themes/zenburn-theme")
 
-(set-default-font "Terminus-9")
+;; ;; Fonts (commented out here, because they are set in .Xresources
+;; (set-default-font "Terminus-9")
+;; (setq default-frame-alist '((font . "Terminus-9")))
 
 
 ;; ========== ELPA PACKAGES ========== ;;
