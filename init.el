@@ -3,8 +3,9 @@
 ;; ========== INITIAL SETUP ========== ;;
 
 ;; Turn off mouse interface early in startup to avoid momentary display
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
 (when window-system
-  (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
   (if (fboundp 'tooltip-mode) (tooltip-mode -1))
   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -18,6 +19,8 @@
 
 ;; Load theme as soon as possible
 (load "themes/zenburn-theme")
+
+(set-default-font "Terminus-9")
 
 
 ;; ========== ELPA PACKAGES ========== ;;
@@ -47,6 +50,10 @@
 
 (setq column-number-mode t)
 (setq scroll-preserve-screen-position t)
+
+(setq truncate-partial-width-windows nil)
+(setq toggle-text-mode-auto-fill nil)
+(setq fill-column 80)
 
 ;; Enable upcase-region (C-x C-u) and downcase-region (C-x C-l).
 (put 'upcase-region 'disabled nil)
